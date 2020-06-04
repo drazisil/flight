@@ -1,0 +1,10 @@
+name: Flight
+version: @version@
+main: come.drazisil.flight.Flight
+api-version: "1.13"
+authors: [Drazisil]
+description: Lets you fly
+commands:
+  fly:
+    description: Toggle fly
+    usage: /fly
