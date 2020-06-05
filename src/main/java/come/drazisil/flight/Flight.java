@@ -14,6 +14,7 @@ public final class Flight extends JavaPlugin {
         // Plugin startup logic
 
 
+        plugin = this;
         logger = getLogger();
 
         this.getCommand("fly").setExecutor(new CommandFly());
