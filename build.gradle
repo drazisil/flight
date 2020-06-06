@@ -1,9 +1,12 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
-apply plugin: 'java'
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+}
 
-group = 'come.drazisil'
-version = '1.0.2-SNAPSHOT'
+group = 'com.drazisil'
+version = '1.0.3-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -14,10 +17,24 @@ repositories {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
+    maven {
+        name = 'CodeMC'
+        url = 'https://repo.codemc.org/repository/maven-public'
+    }
 }
 
 dependencies {
     compileOnly 'org.bukkit:bukkit:1.15.2-R0.1-SNAPSHOT'
+    compile 'org.bstats:bstats-bukkit:1.7'
+}
+
+shadowJar {
+    archiveClassifier.set("")
+    dependencies {
+        include(dependency("org.bstats:bstats-bukkit:1.7"))
+    }
+    relocate 'org.bstats', 'shadow.bstats'
+    minimize()
 }
 
 processResources {
@@ -25,3 +42,10 @@ processResources {
         filter ReplaceTokens, tokens: [version: version]
     }
 }
+
+tasks.build.dependsOn(shadowJar)
+
+artifacts {
+    shadowJar
+}
+

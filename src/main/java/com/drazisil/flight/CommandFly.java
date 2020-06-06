@@ -1,4 +1,4 @@
-package come.drazisil.flight;
+package com.drazisil.flight;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

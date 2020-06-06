@@ -1,4 +1,4 @@
-package come.drazisil.flight;
+package com.drazisil.flight;
 
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
